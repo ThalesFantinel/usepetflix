@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/bootstrap.css">
+  <title>Cadastrar</title>
+</head>
+<title>Login 04</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="/bootstrap.css" />
+</head>
+
+<body>
+  <section class="ftco1-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+          <div class="wrap d-md-flex">
+            <div class="img" style="
+                background-image: url(/imagens/Faça\ agora\ o\ seu\ login!.png);
+              "></div>
+            <div class="login-wrap p-5 p-md-5">
+              <div class="d-flex">
+                <div class="w-100">
+                  <h3 class="mb-2">Cadastrar um pet</h3>
+                </div>
+              </div>
+
+
+              <form action="/cadastrarPet" class="signin-form" method="POST" enctype="multipart/form-data">
+                <div class="form-group mb-0">
+                  <label class="label" for="nome">Nome</label>
+                  <input type="text" class="form-control" placeholder="Digite aqui..." name="nome" required />
+                </div>
+
+                <div class="form-group mb-0"id="genero">
+                   <label class="label" for="nome">Gênero</label>
+                   <div>
+                      <input class="ml-1 mr-1" name="genero" type="radio" value="Macho" <%='Macho' ? 'selected' : '' %>>Macho
+                      <input class="ml-1 mr-1" name="genero" type="radio" value="Fêmea" <%='Fêmea' ? 'selected' : '' %>>Fêmea
+                   </div>
+                </div>
+
+                <div class="form-group mb-0 " id="porte">
+                  <label class="label" for="nome">Porte</label>
+                  <div>
+                      <input class="ml-1 mr-1" name="porte" type="radio" value="Grande" <%='Grande' ? 'selected' : '' %>>Grande
+                      <input class="ml-1 mr-1" name="porte" type="radio" value="Médio" <%='Médio' ? 'selected' : '' %>>Médio
+                      <input class="ml-1 mr-1" name="porte" type="radio" value="Médio" <%='Pequeno' ? 'selected' : '' %>>Pequeno
+                  </div>                
+                </div>
+
+                <div class="form-group mb-0">
+                  <label class="label" for="localizacao">Localização</label>
+                  <input type="text" class="form-control" placeholder="Digite aqui..." name="localizacao" required />
+                </div>
+
+                <div class="form-group mb-0">
+                  <label class="label" for="especie">Espécie</label>
+                  <input type="text" class="form-control" placeholder="Digite aqui..." name="especie" required />
+                </div>
+
+                <div class="form-group mb-0">
+                  <label class="label" for="idade">Idade(se souber)</label>
+                  <input type="text" class="form-control" placeholder="Digite aqui..." name="idade" required />
+                </div>
+
+                <div class="form-group mb-0" id="vacina_obrigatoria">
+                  <label class="label" for="nome">Vacinas</label>
+                  <div>
+                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="v1" <%='v1' ? 'selected' : '' %>>v1
+                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="v2" <%='v2' ? 'selected' : '' %>>v2
+                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="v3" <%='v3' ? 'selected' : '' %>>v3
+                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="Nenhuma" <%='Nenhuma' ? 'selected' : '' %>>Nenhuma
+                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="Não sei dizer" <%='Não sei dizer' ? 'selected' : '' %>>Não sei
+                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="outra(s)" <%='outra(s)' ? 'selected' : '' %>>Outra
+                  </div>
+                 
+                </div>
+
+                <div id="outraVacina" style="display: none;">
+                  <label for="campoOutraVacina"></label>
+                  <input type="text" id="campoOutraVacina" name="vacina_obrigatoria" placeholder="Qual outra vacina?">
+                </div>
+
+                <script>
+                  var selectVacina = document.getElementById("vacina_obrigatoria");
+                  var divOutraVacina = document.getElementById("outraVacina");
+
+                  selectVacina.addEventListener("change", function () {
+                    if (selectVacina.value === "outra(s)") {
+                      divOutraVacina.style.display = "block";
+                    } else {
+                      divOutraVacina.style.display = "none";
+                    }
+                  });
+                </script>
+                
+                <div class="form-group mb-0" id="objetivo">
+                  <label class="label" for="nome">Objetivo</label>
+                   <div name="objetivo">
+                      <input class="ml-1 mr-1" type="radio" name="objetivo" value="Adoção" <%='Adoção' ? 'selected' : '' %>>Adoção
+                      <input class="ml-1 mr-1" type="radio" name="objetivo" value="Apadrinhamento" <%='Apadrinhamento' ? 'selected' : '' %>>Apadrin.
+                      <input class="ml-1  mr-1" type="radio" name="objetivo" value="Desaparecido" <%='Desaparecido' ? 'selected' : '' %>>Desapar.
+                    </div>
+                </div>
+                   
+
+                    <div class="form-group mb-0">
+                      <label class="label" for="descricao">Descrição</label>
+                      <input type="text" class="form-control" placeholder="Digite aqui..." name="descricao" required />
+                    </div>
+
+                  <div class="form-group mb-0">
+                    <label class="label" for="imagem">Selecione uma imagem:</label>
+                    <input type="file" name="file" id="imagem" required>
+                    <div class="pt-3">
+                      <input type="submit" value="Enviar" class="form-control btn btn-primary rounded submit px-3">
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
+
+<body></body>
+
+</html>

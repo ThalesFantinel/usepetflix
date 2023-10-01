@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetFlix</title>
+    <link href="./css2/sobre.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" href="./imagens/logo.png" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light">
+      <div class="container-fluid">
+          <img src="./img/navimage.png">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" style="color: #000; text-decoration: underline">
+                          Páginas
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="/">Início</a></li>
+                          <li><a class="dropdown-item" href="/sobre">Sobre</a></li>
+                          <li><a class="dropdown-item" href="/parceiros">Parceiros</a></li>
+                          <li><a class="dropdown-item" href="/conteudos">Conteúdos</a></li>
+                          <li><a class="dropdown-item" href="/cadastrarPet">Cadastrar pet</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/pets"
+                          style="color: #000;text-decoration: underline">Adotar</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/perfil" style="color: #000;text-decoration: underline">Perfil</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./img/Tela sobre.png" class="d-block w-100" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" id="sobre">
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div id="texto" class="card-body">
+            <h3 class="card-title">SOBRE NÓS</h3>
+            <p class="card-text">
+              ㅤ Somos um site, planejado e desenvolvido à partir do trabalho de
+              conclusão de curso dos alunos Dienifer Graziela Ripl e Thales
+              Augusto Fantinel Malta da Escola Técnica Estadual Monteiro Lobato
+              - CIMOL.
+            </p>
+            <p class="card-text">
+              ㅤ Esse site foi feito como um ato de amor e solidariedade aos
+              animais que vivem nos abrigos públicos que estão aguardando uma
+              nova chance de ter um lar e uma família que ame e cuide deles.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="imgSobre">
+            <img
+              src="./imagens/seta-sobre.png"
+              class="img-fluid rounded-start"
+              style="margin-top: 26vh; margin-left: 4vw"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" id="comoFunciona" style="border: none">
+      <div class="col-md-4">
+        <div class="imgSobre">
+          <img
+            src="./imagens/comoFunciona.png"
+            class="imagem1"
+            style="width: 25vw"
+          />
+          <img src="./imagens/comoFunciona (2).png" class="imagem2" />
+        </div>
+      </div>
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div
+            id="texto"
+            class="card-body"
+            style="margin-left: 38vw; width: 53vw"
+          >
+            <h3 class="card-title">COMO FUNCIONA O PETFLIX?</h3>
+            <p class="card-text">
+              ㅤ O Programa PetFlix é a conexão que faltava entre você e o seu
+              melhor amigo: através do cadastro e atuação de ONGs e institutos
+              protetors e diversas instituições parceiras, diversos cães e gatos
+              têm a chance de encontrar um lar seguro para eles. Para nós,
+              adotar é um momento de felicidade, que deve ser construído com
+              parceria, cuidado e responsabilidade.
+            </p>
+            <p class="card-text">
+              ㅤ Somos uma rede de apaixonados por pets e queremos incentivar a
+              adoção, conscientizar sobre a posse responsável e ajudar a
+              diminuir o índice de animais abandonados através deste projeto e
+              ações para melhoria de bem estar de pets e instituições parceiras
+              em toda a nossa região!
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./img/Arrow 2.jpg"
+        style="width: 50vw; margin-left: 25vw; margin-top: 10vh"
+      />
+    </div>
+
+    <div
+      class="card mb-3"
+      id="comoFunciona"
+      style="border: none; margin-top: 10vh"
+    >
+      <div class="col-md-4" style="margin-left: 58.9vw">
+        <div class="imgSobre">
+          <img
+            src="./img/Frame 16.png"
+            class="imagem1 text-end"
+            style="width: 40vw"
+          />
+        </div>
+      </div>
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div
+            id="texto"
+            class="card-body"
+            style="width: 47vw; margin-left: 7vw"
+          >
+            <h3 class="card-title">IMPORTÂNCIA DA ADOÇÃO</h3>
+            <p class="card-text">
+              ㅤ A adoção é um ato de amor e solidariedade que pode mudar a vida
+              de um animal para sempre. Muitos animais abandonados ou
+              maltratados acabam em abrigos, aguardando uma nova chance de ter
+              um lar e uma família que os ame e cuide deles. Adotar um animal
+              não apenas transforma a vida dele, mas também traz inúmeros
+              benefícios para a vida das pessoas. Ao adotar um animal estamos
+              dando a ele uma nova chance de ser feliz e ter uma vida plena. Ao
+              mesmo tempo, estamos também nos tornando responsáveis por um novo
+              membro da família, o que pode trazer muitas alegrias e novas
+              experiências. Além disso, estudos mostram que ter um animal de
+              estimação pode trazer benefícios para a saúde física e mental das
+              pessoas, reduzindo o estresse e melhorando a qualidade de vida.
+              Por fim, adotar é um gesto de amor e empatia. Ao dar um lar para
+              um animal, estamos exercendo nossa capacidade de se colocar no
+              lugar do outro e de se importar com o bem-estar de seres que não
+              falam a nossa língua, mas que podem nos ensinar muito sobre o amor
+              e a lealdade.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./img/Arrow 3.jpg"
+        style="width: 50vw; margin-left: 10vw; margin-top: 13vh"
+      />
+    </div>
+
+    <div
+      class="card mb-3"
+      id="comoFunciona"
+      style="border: none; margin-top: 13vh"
+    >
+      <div class="col-md-4">
+        <div class="imgSobre col-sm-1">
+          <img src="./img/Frame 17.png" class="imagem1" style="width: 30vw" />
+        </div>
+      </div>
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div
+            id="texto"
+            class="card-body"
+            style="margin-left: 38vw; width: 45vw"
+          >
+            <h3 class="card-title">IMPORTÂNCIA DOS CENTROS DE AJUDA</h3>
+            <p class="card-text">
+              ㅤ Os lugares de ajuda de animais são espaços importantes e
+              essenciais para a proteção e cuidado de animais em situação de
+              risco e vulnerabilidade. Eles são geralmente gerenciados por
+              organizações sem fins lucrativos, que trabalham para garantir o
+              bem-estar de animais abandonados, feridos ou vítimas de
+              maus-tratos. Esses lugares de ajuda de animais oferecem diversos
+              serviços para ajudar os animais, tais como abrigo, alimentação,
+              atendimento veterinário e acompanhamento especializado. Também
+              oferecem programas de adoção e campanhas de conscientização sobre
+              a importância de proteger e cuidar dos animais. Os abrigos de
+              animais são uma das principais formas de ajuda que esses lugares
+              oferecem. Eles oferecem um lugar seguro e confortável para os
+              animais, onde eles podem receber cuidados médicos, alimentação
+              adequada e, em alguns casos, treinamento e socialização. Muitos
+              abrigos trabalham em parceria com outras organizações, como
+              veterinários e resgatistas, para garantir que os animais recebam o
+              cuidado necessário.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="conteudos">
+      <div
+        class="container text-center"
+        style="max-width: 100vw; margin-left: 0; background-color: #bdd1de"
+      >
+        <div class="row align-items-end">
+          <div class="col-lg-12">
+            <h3>CONTEÚDOS SOBRE</h3>
+          </div>
+          <div class="col-lg-12" style="text-align: initial; width: 700px">
+            <p style="margin-left: 13vw; width: 70vw; text-align: center">
+              Acesse algum dos textos e posts sobre cuidados, vivência e
+              conteúdos informativos sobre os animais domésticos e silvestres.
+            </p>
+          </div>
+          <div id="patasConteudos" class="col-lg-12">
+            <img
+              src="./imagens/conteudos-patas.png"
+              style="width: 27vw; margin-top: 2vh"
+            />
+          </div>
+          <div class="col">
+            <img src="./imagens/exercicios.png" />
+            <p>EXERCÍCIOS</p>
+          </div>
+          <div class="col">
+            <img src="./imagens/alimentacao.png" />
+            <p>ALIMENTAÇÃO</p>
+          </div>
+          <div class="col">
+            <img src="./imagens/cuidados.png" />
+            <p>CUIDADOS</p>
+          </div>
+          <div class="col">
+            <img src="./imagens/resgateAdocao.png" />
+            <p>RESGATE E ADOÇÃO</p>
+          </div>
+          <div class="col">
+            <img src="./imagens/noticias.png" />
+            <p>ÚLTIMAS NOTÍCIAS</p>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="button" href="/conteudos">
+            Ler mais
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg mt-5" style="background-color: #260d33">
+      <div class="container-fluid">
+        <img style="width: 25vh; margin-left: 5vw" src="./img/logofooter.png" />
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNavDropdown"
+          style="margin-left: 25vw"
+        >
+          <ul id="footer" class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active text-light"
+                aria-current="page"
+                href="/sobre"
+                style="color: #000"
+                >Topo</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-light"
+                aria-current="page"
+                href="/pets"
+                style="color: #000"
+                >Adotar</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="/" style="color: #000"
+                >Início</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </body>
+  <script src="./js/script.js"></script>
+</html>

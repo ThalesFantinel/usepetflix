@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetFlix</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css2/sobre.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="icon" href="./imagens/logo.png">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light">
+        <div class="container-fluid">
+            <img src="./img/navimage.png">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000; text-decoration: underline">
+                            Páginas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/">Início</a></li>
+                            <li><a class="dropdown-item" href="/sobre">Sobre</a></li>
+                            <li><a class="dropdown-item" href="/parceiros">Parceiros</a></li>
+                            <li><a class="dropdown-item" href="/conteudos">Conteúdos</a></li>
+                            <li><a class="dropdown-item" href="/cadastrarPet">Cadastrar pet</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/pets" style="color: #000; text-decoration: underline">Adotar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/perfil" style="color: #000; text-decoration: underline">Perfil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./img/Tela mensagem início.png" class="d-block w-100">
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3" id="sobre">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body1">
+                    <h3 class="card-title">SOBRE NÓS</h3>
+                    <p class="card-text">Somos um site sem fins lucrativos, planejado e desenvolvido à partir do trabalho de conclusão de curso dos alunos Dienifer Graziela Ripl e Thales Augusto Fantinel Malta da Escola Técnica Estadual Monteiro Lobato - CIMOL.</p>
+                    <p class="card-text">Esse site foi feito como um ato de amor e solidariedade aos animais que vivem nos abrigos públicos que estão aguardando uma nova chance de ter um lar e uma família que ame e cuide deles.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="imgSobre">
+                    <img src="./imagens/sobre.png" class="img-fluid rounded-start">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="comoAjudamos">
+        <div id="comoAjudamos-imgCats">
+            <img src="./imagens/comoAjudamos.png">
+        </div>
+
+        <div class="container text-center" style="max-width: 750px;">
+            <div class="row align-items-end">
+                <div class="col-lg-12">
+                    <h3 class="text-center">COMO PODEMOS AJUDAR</h3>
+                </div>
+                <div class="col-lg-12" style="text-align: center;">
+                    <p>Você pode entrar em contato com diferentes redes de ajuda e de bem-estar no qual possuímos parcerias.</p>
+                    <p>Como veterinários, petshops e até mesmo hotéis para os seus animais.</p>
+                    <p style="margin-bottom: 3vh;">Basta clicar em (páginas) e escolher um dos serviços.</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/inf.png">
+                    <p>VETERINÁRIO</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/inf2.png">
+                    <p>PETSHOP</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/inf3.png">
+                    <p>HOTEL DE PET</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="conteudos">
+        <div class="container text-center" style="max-width: 100vw; margin-left: 0; background-color: #BDD1DE;">
+            <div class="row align-items-end">
+                <div class="col-lg-12">
+                    <h3>CONTEÚDOS SOBRE</h3>
+                </div>
+                <div class="col-lg-12" style="text-align: initial; width: 700px;">
+                    <p style="margin-left: 13vw; width: 70vw; text-align: center;">Acesse algum dos textos e posts sobre cuidados, vivência e conteúdos informativos sobre os animais domésticos e silvestres.</p>
+                </div>
+                <div id="patasConteudos" class="col-lg-12">
+                    <img src="./imagens/conteudos-patas.png" style="width: 27vw; margin-top: 2vh;">
+                </div>
+                <div class="col">
+                    <img src="./imagens/cuidados.png">
+                    <p>EXERCÍCIOS</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/resgateAdocao.png">
+                    <p>ALIMENTAÇÃO</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/cuidados.png">
+                    <p>CUIDADOS</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/resgateAdocao.png">
+                    <p>RESGATE E ADOÇÃO</p>
+                </div>
+                <div class="col">
+                    <img src="./imagens/noticias.png">
+                    <p>ÚLTIMAS NOTÍCIAS</p>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="button" href="/sobre">Ler mais</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg mt-5" style="background-color: #260D33;">
+        <div class="container-fluid">
+            <img style="width: 25vh; margin-left: 5vw;" src="./img/logofooter.png" />
+            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-left: 25vw">
+                <ul id="footer" class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="/" style="color: #000;">Topo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="/pets" style="color: #000;">Adotar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/" style="color: #000;">Início</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

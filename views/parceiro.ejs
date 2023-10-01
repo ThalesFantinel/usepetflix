@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <% parceiro.forEach(function(parceiro) { %>
+        <div class="col mb-5">
+            <div class="card h-100">
+                <img class="card-img-top" src="/<%= parceiro.caminho_imagem %>" alt="..." />
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <h5 class="fw-bolder text-start">
+                            <%= parceiro.nome %>
+                        </h5>
+                        <h6 class="text-start">
+                            <%= parceiro.tipo %>
+                        </h6>
+                        <p>da p informar mais coisas aq sobre os parceiros tipo o é , petshop ou sla, tem varias inf
+                            sobre parceiros no banco, escolher as mais importantes </p>
+                    </div>
+                </div>
+                <% if (user && user.role==='admin' ) { %>
+                    <a href="/parceiros/<%= parceiro.id_parceiro %>/editar">Editar</a>
+                    <% } %>
+
+                        <% if (user && user.role==='admin' ) { %>
+                            <form action="/parceiros/<%= parceiro.id_parceiro %>/excluir" method="POST"
+                                style="display: inline;">
+                                <button type="submit">Excluir</button>
+                            </form>
+                            <% } %>
+            </div>
+        </div>
+        <% }) %>
+
+
+</body>
+
+</html>

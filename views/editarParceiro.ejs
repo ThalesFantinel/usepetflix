@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Editar parceiro</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+
+    <h1>Editar parceiro</h1>
+
+    <% parceiro.forEach(function(parceiro) { %>
+
+        <form action="/parceiros/<%= parceiro.id_parceiro %>/editar" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="nome" name="nome" value="<%= parceiro.nome %>" required><br>
+
+            <label for="description">tipo:</label>
+            <textarea id="tipo" name="tipo" required><%= parceiro.tipo %></textarea><br>
+
+            <input type="submit" value="Salvar">
+        </form>
+        <% }) %>
+
+</body>
+
+</html>
