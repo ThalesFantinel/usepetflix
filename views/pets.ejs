@@ -72,7 +72,7 @@
             <% listaPets.forEach(function(pet) { %>
             <div class="col mb-5">
               <div class="card h-100" data-especie="<%= pet.especie %>" data-idade="<%= pet.idade %>" data-porte="<%= pet.porte %>" data-localizacao="<%= pet.localizacao %>" data-genero="<%= pet.genero %>">
-                <img class="card-img-top" src="/<%= pet.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" alt="Sem foto"/>
+                <img class="card-img-top" src="/<%= pet.caminho_imagem %>" style="width: auto;height: 150px; object-fit: cover;" onerror="this.src='/img/perfilSemFoto.png';" alt="Sem foto"/>
                 <div class="card-body p-4">
                   <div class="text-center">
                     <h5 class="fw-bolder text-start"><%= pet.nome %></h5>

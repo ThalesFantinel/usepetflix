@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
+
 <head>
     <meta charset="utf-8" />
     <title>Pet</title>
@@ -239,6 +240,8 @@
                                             </div>
                                         </div>
 
+                                        <input type="hidden" name="caminho_imagem" value="<%= pet.caminho_imagem %>">
+
                                         <label for="file">Selecione uma nova imagem:</label>
                                         <input type="file" name="file" id="imagem">
 
@@ -272,6 +275,7 @@
                     </div>
                 </div>
             </nav>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

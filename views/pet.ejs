@@ -47,7 +47,7 @@
                     <div class="row gy-5">
             
                       <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-                        <img src="/<%= pet.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" class="img-fluid services-img">
+                        <img src="/<%= pet.caminho_imagem %>" style="object-fit: cover; width: 850px;height: 500px;" onerror="this.src='/img/perfilSemFoto.png';" class="img-fluid services-img">
                         <h3><%= pet.nome %></h3>
                         <p><strong>Descrição:</strong></p>
                         <p><%= pet.descricao %></p>
