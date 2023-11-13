@@ -2,7 +2,7 @@ const Database = require('./database');
 const md5 = require('md5');
 
 class User {
-    constructor(id, nome, email, cpf, telefone, senha, imagem) {
+    constructor(id, nome, email, cpf, telefone, senha, imagem, biografia) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -10,6 +10,7 @@ class User {
         this.telefone = telefone;
         this.senha = senha;
         this.imagem = imagem;
+        this.biografia = biografia;
     }
 
     static async autenticar(email, senha) {
@@ -48,34 +49,36 @@ class User {
     }
 
     async save(imagePath) {
-        let resp = await Database.query(`INSERT INTO user (nome, email, cpf, telefone, senha, imagem ) VALUES ('${this.nome}', '${this.email}', '${this.cpf}', '${this.telefone}' , '${md5(this.senha)}', '${imagePath}' );`);
+        let resp = await Database.query(`INSERT INTO user (nome, email, cpf, telefone, senha, imagem, biografia ) VALUES ('${this.nome}', '${this.email}', '${this.cpf}', '${this.telefone}' , '${md5(this.senha)}', '${imagePath}', '${this.biografia}' );`);
         console.log(resp);
     }
 
-    static async update(id, nome, telefone, fileName) {
-        const resp = await Database.query(`UPDATE user SET nome = '${nome}', telefone = '${telefone}', imagem = '${fileName}' WHERE id_user = '${id}'`)
+    // nome, email, cpf, telefone, imagem, biografia
+    static async update(id, nome, email, cpf, telefone, fileName, biografia) {
+        const resp = await Database.query(`UPDATE user SET nome = '${nome}', email = '${email}', cpf = '${cpf}', telefone = '${telefone}', imagem = '${fileName}', biografia = '${biografia}' WHERE id_user = '${id}'`)
         if (resp) {
             if (resp.affectedRows > 0) {
                 return true;
             } else {
                 return false;
             }
-        } else
+        } else {
             return false;
-
+        }
     }
+
 
     static async verificarEmail(email) {
         const resp = await Database.query(`SELECT * FROM user WHERE email = '${email}'`);
-        
-        return resp;        
+
+        return resp;
     }
 
     static async verificarCpf(cpf) {
         const resp = await Database.query(`SELECT * FROM user WHERE cpf = '${cpf}'`);
-        
+
         return resp;
-        
+
     }
 
 }

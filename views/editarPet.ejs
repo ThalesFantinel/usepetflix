@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
 <head>
     <meta charset="utf-8" />
     <title>Pet</title>
@@ -55,7 +54,8 @@
 
     <% pet.forEach(function(pet) { %>
 
-        <form action="/pets/<%= pet.id_animal %>/editar" method="POST" style="display: inline_block;">
+        <form action="/pets/<%= pet.id_animal %>/editar" method="POST" style="display: inline_block;"
+            enctype="multipart/form-data">
 
 
             <div class="container" style="padding-top: 100px">
@@ -104,12 +104,14 @@
                                                 <select class="border-1 form-control-sm" name="objetivo" id="objetivo"
                                                     required>
                                                     value="<%= pet.objetivo %>"
-                                                        <option value="Adoção" <%='Adoção' ? 'selected' : '' %>>Adoção
-                                                        </option>
-                                                        <option value="Apadrinhamento" <%='Apadrinhamento' ? 'selected'
-                                                            : '' %>>Apadrinhamento</option>
-                                                        <option value="Desaparecido" <%='Desaparecido' ? 'selected' : ''
-                                                            %>>Desaparecido</option>
+                                                        <option value="Adoção" <%=pet.objetivo==='Adoção' ? 'selected'
+                                                            : '' %>
+                                                            >Adoção</option>
+                                                        <option value="Apadrinhamento"
+                                                            <%=pet.objetivo==='Apadrinhamento' ? 'selected' : '' %>
+                                                            >Apadrinhamento</option>
+                                                        <option value="Desaparecido" <%=pet.objetivo==='Desaparecido'
+                                                            ? 'selected' : '' %>>Desaparecido</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -133,10 +135,10 @@
                                             <div class="col-sm-9 text-secondary">
                                                 <select class="border-1 form-control-sm" name="genero" id="genero">
                                                     value="<%= pet.nome %>"
-                                                        <option value="Macho" <%='Macho' ? 'selected' : '' %>>Macho
-                                                        </option>
-                                                        <option value="Fêmea" <%='Fêmea' ? 'selected' : '' %>>Fêmea
-                                                        </option>
+                                                        <option value="Macho" <% if (pet.genero==="Macho" ) { %>
+                                                            selected <% } %>>Macho</option>
+                                                        <option value="Fêmea" <% if (pet.genero==="Fêmea" ) { %>
+                                                            selected <% } %>>Fêmea</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -149,12 +151,14 @@
                                                 <select class="border-1 form-control-sm" name="porte" id="porte"
                                                     required>
                                                     value="<%= pet.porte %>"
-                                                        <option value="Grande" <%='Grande' ? 'selected' : '' %>>Grande
-                                                        </option>
-                                                        <option value="Médio" <%='Médio' ? 'selected' : '' %>>Médio
-                                                        </option>
-                                                        <option value="Médio" <%='Pequeno' ? 'selected' : '' %>>Pequeno
-                                                        </option>
+                                                        <option value="Grande" <%=pet.porte==='Grande' ? 'selected' : ''
+                                                            %>
+                                                            >Grande</option>
+                                                        <option value="Médio" <%=pet.porte==='Médio' ? 'selected' : ''
+                                                            %>
+                                                            >Médio</option>
+                                                        <option value="Pequeno" <%=pet.porte==='Pequeno' ? 'selected'
+                                                            : '' %>>Pequeno</option>
 
                                                 </select>
                                             </div>
@@ -234,6 +238,10 @@
                                                     value="<%= pet.descricao %>" />
                                             </div>
                                         </div>
+
+                                        <label for="file">Selecione uma nova imagem:</label>
+                                        <input type="file" name="file" id="imagem">
+
                                     </form>
                                 </div>
                             </div>
@@ -244,24 +252,26 @@
         </form>
         <% }) %>
 
-        <nav class="navbar navbar-expand-lg mt-5" style="background-color: #260D33;">
-            <div class="container-fluid">
-                <img style="width: 25vh; margin-left: 5vw;" src="/img/logofooter.png" />
-                <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-left: 25vw">
-                    <ul id="footer" class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active text-light" aria-current="page" href="/" style="color: #000;">Topo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-light" aria-current="page" href="/pets" style="color: #000;">Adotar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="/" style="color: #000;">Início</a>
-                        </li>
-                    </ul>
+            <nav class="navbar navbar-expand-lg mt-5" style="background-color: #260D33;">
+                <div class="container-fluid">
+                    <img style="width: 25vh; margin-left: 5vw;" src="/img/logofooter.png" />
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-left: 25vw">
+                        <ul id="footer" class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" aria-current="page" href="/"
+                                    style="color: #000;">Topo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-light" aria-current="page" href="/pets"
+                                    style="color: #000;">Adotar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="/" style="color: #000;">Início</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            </nav>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

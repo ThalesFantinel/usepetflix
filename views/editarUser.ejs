@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Editar perfil</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
@@ -12,33 +11,40 @@
 
     <% user.forEach(function(user) { %>
 
-        <form action="/perfil/<%= user.id_user %>/editar" class="signin-form" method="POST" enctype="multipart/form-data">
-            <label for="name">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<%= user.nome %>" required><br>
+        <form action="/perfil/<%= user.id_user %>/editar" class="signin-form" method="POST"
+            enctype="multipart/form-data">
 
-            <label for="description">telefone:</label>
-            <textarea id="telefone" name="telefone" required><%= user.telefone %></textarea><br>
+            <div class="col-sm-9">
+                <input type="text" class="form-control-sm border-1 mb-0" placeholder="Digite aqui..." name="nome"value="<%= user.nome %>" />
+            </div>
 
-            <input type="submit" value="Enviar" class="form-control btn btn-primary rounded submit px-3">
+            <div class="col-sm-9">
+                <input type="text" class="form-control-sm border-1 mb-0"placeholder="Digite aqui..." name="email" value="<%= user.email %>" />
+            </div>
 
-            <label for="file">Imagem atual:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control-sm border-1 mb-0"placeholder="Digite aqui..." name="cpf" value="<%= user.cpf %>" />
+            </div>
+
+            <div class="col-sm-9">
+                <input type="text" class="form-control-sm border-1 mb-0"placeholder="Digite aqui..." name="telefone" value="<%= user.telefone %>" />
+            </div>
+
+            <div class="col-sm-9">
+                bio
+                <input type="text" class="form-control-sm border-1 mb-0"placeholder="Digite aqui..." name="biografia" value="<%= user.biografia %>" />
+            </div>
+
             <% if (user.imagem) { %>
-                <img src="/<%= user.imagem %>"
-                    class="img-fluid img-thumbnail mt-4 mb-2 rounded-circle">
+                <img src="/<%= user.imagem %>" class="img-fluid img-thumbnail mt-4 mb-2 rounded-circle">
                 <% } else { %>
                     <p>Nenhuma imagem disponível.</p>
                     <% } %>
 
                         <label for="file">Selecione uma nova imagem:</label>
-                        <input type="file" name="file" id="file" required>
-
-
+                        <input type="file" name="file" id="file">
                         <input type="submit" value="Enviar" class="form-control btn btn-primary rounded submit px-3">
-
-
         </form>
         <% }) %>
-
-</body>
-
+    </body>
 </html>

@@ -43,8 +43,11 @@ class Pet {
     }
 
     static async getById(id, user_id_user) {
+        console.log("id model pet: "+id);
         let pet = await Database.query(`SELECT * FROM animal WHERE id_animal = ${id} `);
 
+        console.log("pet para pdf:");
+        console.log(pet);
         return pet;
     }
 
@@ -65,8 +68,8 @@ class Pet {
         return pets;
     }
 
-    static async update(id, nome, genero, porte, localizacao, especie, idade, vacina_obrigatoria, objetivo, descricao) {
-        const resp = await Database.query(`UPDATE animal SET nome = '${nome}', genero = '${genero}', porte = '${porte}', localizacao = '${localizacao}', especie = '${especie}', idade = '${idade}', vacina_obrigatoria = '${vacina_obrigatoria}', objetivo = '${objetivo}', descricao = '${descricao}'  WHERE id_animal = '${id}'`)
+    static async update(id, nome, genero, porte, localizacao, especie, idade, vacina_obrigatoria, objetivo, descricao, filename) {
+        const resp = await Database.query(`UPDATE animal SET nome = '${nome}', genero = '${genero}', porte = '${porte}', localizacao = '${localizacao}', especie = '${especie}', idade = '${idade}', vacina_obrigatoria = '${vacina_obrigatoria}', objetivo = '${objetivo}', descricao = '${descricao}', caminho_imagem = '${filename}' WHERE id_animal = '${id}'`)
         if (resp) {
             if (resp.affectedRows > 0) {
                 return true;

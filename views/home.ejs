@@ -1,161 +1,198 @@
-<!DOCTYPE html>
-<html lang="PT-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetFlix</title>
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="./css2/sobre.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="icon" href="./imagens/logo.png">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light">
-        <div class="container-fluid">
-            <img src="./img/navimage.png">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000; text-decoration: underline">
-                            Páginas
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/">Início</a></li>
-                            <li><a class="dropdown-item" href="/sobre">Sobre</a></li>
-                            <li><a class="dropdown-item" href="/parceiros">Parceiros</a></li>
-                            <li><a class="dropdown-item" href="/conteudos">Conteúdos</a></li>
-                            <li><a class="dropdown-item" href="/cadastrarPet">Cadastrar pet</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pets" style="color: #000; text-decoration: underline">Adotar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/perfil" style="color: #000; text-decoration: underline">Perfil</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<%- include('layouts/default/Navbar') %>
 
-    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./img/Tela mensagem início.png" class="d-block w-100">
-            </div>
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true" style="margin-top: 5.1rem">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./img/Tela mensagem início.png" class="d-block w-100" />
         </div>
+      </div>
     </div>
 
-    <div class="card mb-3" id="sobre">
-        <div class="row g-0">
-            <div class="col-md-8">
-                <div class="card-body1">
-                    <h3 class="card-title">SOBRE NÓS</h3>
-                    <p class="card-text">Somos um site sem fins lucrativos, planejado e desenvolvido à partir do trabalho de conclusão de curso dos alunos Dienifer Graziela Ripl e Thales Augusto Fantinel Malta da Escola Técnica Estadual Monteiro Lobato - CIMOL.</p>
-                    <p class="card-text">Esse site foi feito como um ato de amor e solidariedade aos animais que vivem nos abrigos públicos que estão aguardando uma nova chance de ter um lar e uma família que ame e cuide deles.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="imgSobre">
-                    <img src="./imagens/sobre.png" class="img-fluid rounded-start">
-                </div>
-            </div>
+    <section class="page-section clearfix">
+      <div class="container">
+        <div class="intro">
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="./imagens/comoAjudamos.png" alt="..."/>
+          <div class="intro-text left-0 text-center bg-faded p-5 rounded text-light"style="background-color: #bedcff">
+            <h2 class="section-heading mb-4 text-start">
+              <span class="section-heading-lower" style="font-weight: 700">Sobre Nós</span>
+            </h2>
+            <p class="mb-1 text-dark text-start">
+              Somos um site sem fins lucrativos, planejado e desenvolvido à
+              partir do trabalho de conclusão de curso dos alunos Dienifer
+              Graziela Ripl e Thales Augusto Fantinel Malta da Escola Técnica
+              Estadual Monteiro Lobato - CIMOL.
+            </p>
+            <p class="mb-2 text-dark text-start">
+              Esse site foi feito como um ato de amor e solidariedade aos
+              animais que vivem nos abrigos públicos que estão aguardando uma
+              nova chance de ter um lar e uma família que ame e cuide deles.
+            </p>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <div id="comoAjudamos">
-        <div id="comoAjudamos-imgCats">
-            <img src="./imagens/comoAjudamos.png">
-        </div>
+    <section id="about" class="about mb-5" style="background-color: #bedcff;">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-xl-center gy-5">
+          <div id="conteudo" class="col-xl-5 content">
+            <h3>Conteúdos</h3>
+            <h2>Diversos conteúdos que podem auxíliar você a cuidar de seus pets!</h2>
+            <p>Acesse algum dos textos e posts sobre cuidados, vivência e conteúdos informativos sobre os animais domésticos e silvestres.</p>
+            <a href="#" class="read-more"><span>Acesse agora </span><i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="col-xl-7">
+            <div class="row gy-4 icon-boxes">
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box">
+                  <i class="fa-solid fa-bowl-rice"></i>
+                  <h3>Alimentação</h3>
+                  <p>Descubra o que é recomendado, além de cuidados para se ter com a alimentação de seu pet.</p>
+                </div>
+              </div>
 
-        <div class="container text-center" style="max-width: 750px;">
-            <div class="row align-items-end">
-                <div class="col-lg-12">
-                    <h3 class="text-center">COMO PODEMOS AJUDAR</h3>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="fa-solid fa-briefcase-medical"></i>
+                  <h3>Cuidados</h3>
+                  <p>O principal cuidado que se deve ter com um animal, é com a sua saúde, conheça como se pode melhorar-la.</p>
                 </div>
-                <div class="col-lg-12" style="text-align: center;">
-                    <p>Você pode entrar em contato com diferentes redes de ajuda e de bem-estar no qual possuímos parcerias.</p>
-                    <p>Como veterinários, petshops e até mesmo hotéis para os seus animais.</p>
-                    <p style="margin-bottom: 3vh;">Basta clicar em (páginas) e escolher um dos serviços.</p>
+              </div>
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="fa-solid fa-paw"></i>
+                  <h3>Resgate e Adoção</h3>
+                  <p>Ao invés de comprar um animal, já pensou em adotar um? Veja alguns motivos para se fazer isso. </p>
                 </div>
-                <div class="col">
-                    <img src="./imagens/inf.png">
-                    <p>VETERINÁRIO</p>
+              </div>
+
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="fa-solid fa-dog"></i>
+                  <h3>Exercícios</h3>
+                  <p>Todo animal precisa de uma rotina de exercícios, conheça os que são recomendados por profissionais.</p>
                 </div>
-                <div class="col">
-                    <img src="./imagens/inf2.png">
-                    <p>PETSHOP</p>
-                </div>
-                <div class="col">
-                    <img src="./imagens/inf3.png">
-                    <p>HOTEL DE PET</p>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <div id="conteudos">
-        <div class="container text-center" style="max-width: 100vw; margin-left: 0; background-color: #BDD1DE;">
-            <div class="row align-items-end">
-                <div class="col-lg-12">
-                    <h3>CONTEÚDOS SOBRE</h3>
-                </div>
-                <div class="col-lg-12" style="text-align: initial; width: 700px;">
-                    <p style="margin-left: 13vw; width: 70vw; text-align: center;">Acesse algum dos textos e posts sobre cuidados, vivência e conteúdos informativos sobre os animais domésticos e silvestres.</p>
-                </div>
-                <div id="patasConteudos" class="col-lg-12">
-                    <img src="./imagens/conteudos-patas.png" style="width: 27vw; margin-top: 2vh;">
-                </div>
-                <div class="col">
-                    <img src="./imagens/cuidados.png">
-                    <p>EXERCÍCIOS</p>
-                </div>
-                <div class="col">
-                    <img src="./imagens/resgateAdocao.png">
-                    <p>ALIMENTAÇÃO</p>
-                </div>
-                <div class="col">
-                    <img src="./imagens/cuidados.png">
-                    <p>CUIDADOS</p>
-                </div>
-                <div class="col">
-                    <img src="./imagens/resgateAdocao.png">
-                    <p>RESGATE E ADOÇÃO</p>
-                </div>
-                <div class="col">
-                    <img src="./imagens/noticias.png">
-                    <p>ÚLTIMAS NOTÍCIAS</p>
-                </div>
+    <section id="team" class="team mt-5">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Membros</h2>
+        <p>Como nada na vida se faz sozinho, aqui estão as pessoas que fizeram com que esse projeto exista</p>
+      </div>
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-img">
+              <img src="imagens/Dienifer.png" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
             </div>
+            <div class="member-info text-center">
+              <h4>Dienifer Graziela Ripl</h4>
+              <span>Desenvolvedora do projeto</span>
+              <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum distinctio dire flow</p>
+            </div>
+          </div>
 
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="button" href="/sobre">Ler mais</button>
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="200">
+            <div class="member-img">
+              <img src="./imagens/Diego.png" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
             </div>
+            <div class="member-info text-center">
+              <h4>Diego Candido de Souza</h4>
+              <span>Orientador do projeto</span>
+              <p>Labore ipsam sit consequatur exercitationem rerum laboriosam laudantium aut quod dolores exercitationem ut</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
+            <div class="member-img">
+              <img src="./imagens/Thales.png" class="img-fluid" alt="">
+              <div class="social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="member-info text-center">
+              <h4>Thales Fantinel Malta</h4>
+              <span>Desenvolvedor do projeto</span>
+              <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis fugit eligendi cupiditate vel</p>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <nav class="navbar navbar-expand-lg mt-5" style="background-color: #260D33;">
-        <div class="container-fluid">
-            <img style="width: 25vh; margin-left: 5vw;" src="./img/logofooter.png" />
-            <div class="collapse navbar-collapse" id="navbarNavDropdown" style="margin-left: 25vw">
-                <ul id="footer" class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="/" style="color: #000;">Topo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active text-light" aria-current="page" href="/pets" style="color: #000;">Adotar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="/" style="color: #000;">Início</a>
-                    </li>
-                </ul>
+    <section id="faq" class="faq mt-5">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="content px-xl-5">
+              <h3><span>Algumas <strong>dúvidas </strong>que podem ser tiradas</span></h3>
+              <p>Se você for novo aqui no site e não tiver muito conhecimento sobre esse TCC, então você pode quitar algumas de suas dúvidas por aqui mesmo.</p>
             </div>
+          </div>
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <div class="faq-container">
+              <div class="faq-item faq-active">
+                <h3><span class="num">1.</span> <span>Como eu posso adotar um animal através do PetFlix?</span></h3>
+                <div class="faq-content"><p>Você pode encontrar animais disponíveis para adoção em nossa seção "Adotar". Lá, você encontrará diversos animais com as suas informações e de seu responsável, e assim você poderá entrar em contato com o dono ou com a instituição para poder então se comunicar com eles e encontrar um meio para finalizar essa adoção.</p></div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3><span class="num">2.</span> <span>Posso colaborar com o PetFlix?</span></h3>
+                <div class="faq-content"><p>Sim, aceitamos colaborações, seja voluntariando-se em abrigos, doando para os abrigos parceiros ou compartilhando nossa causa em suas redes sociais.</p></div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3><span class="num">3.</span> <span>Quais serviços e parcerias o PetFlix oferece?</span></h3>
+                <div class="faq-content"><p>O PetFlix possui parcerias com veterinários, petshops e hotéis para animais. Você pode acessar esses serviços clicando no em "Páginas" dentro do menu e então entrando na seção "Parceiros".</p></div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3><span class="num">4.</span> <span>Como posso contribuir com conteúdo para o PetFlix?</span></h3>
+                <div class="faq-content"><p> Se você deseja contribuir com conteúdo relacionado a cuidados de animais, vivência com animais de estimação ou informações úteis, entre em contato conosco através das nossas redes sociais.</p></div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3><span class="num">5.</span> <span>Quais animais podem ser colocados para adoção?</span></h3>
+                <div class="faq-content"><p>Na nossa seção "Adotar" podem ser adicionados qualquer animal que seja considerado como pet. E para fazer isso basta clicar no botão "Páginas" no menu e então acessar a seção "Cadastrar Pet".</p></div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+
+              <div class="faq-item">
+                <h3><span class="num">6.</span> <span>O que é apadrinhamento?</span></h3>
+                <div class="faq-content"><p>O apadrinhamento de animais é um ato solidário onde indivíduos ou empresas contribuem financeiramente para o cuidado e bem-estar de um animal de um abrigo ou instituição de resgate. Essa contribuição ajuda a cobrir despesas como alimentação, cuidados veterinários, abrigo e outros custos associados ao cuidado do animal. Ao apadrinhar um animal, você não apenas fornece suporte financeiro, mas também desempenha um papel importante em oferecer ao animal a chance de ter uma vida melhor e mais segura.</p></div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div>
+            </div>
+          </div>
         </div>
-    </nav>
-</body>
-</html>
+      </div>
+
+    </section>
+
+    <script>
+    document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
+      faqItem.addEventListener('click', () => {
+        faqItem.parentNode.classList.toggle('faq-active');
+      });
+    });
+    </script>
+    <%- include('layouts/default/Footer') %>

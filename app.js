@@ -1,10 +1,12 @@
-require ('dotenv').config();
+require('dotenv').config();
 
+const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
-
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
 const userController = require('./controllers/userController');
 const petController = require('./controllers/petController');
 const parceiroController = require('./controllers/parceiroController');
@@ -30,7 +32,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "views")))
 app.use(express.static(path.join(__dirname, "views/css")))
 
-app.use(session({ secret: 'rdienigz' }));
+app.use(session({
+    secret: 'rdienigz',
+    resave: false,
+    saveUninitialized: false,
+}));
 
 app.use((req, res, next) => {
     if (!req.session.user) {
@@ -62,7 +68,7 @@ app.use((req, res, next) => {
             img: "/img/",
             style: "/css/",
             title: "Página Inicial",
-            user: req.session.user 
+            user: req.session.user
         };
         next();
     }
@@ -98,9 +104,9 @@ app.post('/pets/:id_animal/excluir', (req, res) => {
 });
 
 const Database = require('./models/database');
+const { log } = require('console');
 
 async function verficaDono(req, res, next) {
-
     const id = req.params.id;
     console.log("CREDO:");
     console.log(id);
@@ -119,12 +125,6 @@ async function verficaDono(req, res, next) {
         res.send("acesso negado, você não cadastrou esse pet!");
     }
 }
-
-app.get('/pets/:id/editar', verficaDono, petController.getPetById2);
-
-app.post('/pets/:id/editar', verficaDono, (req, res) => {
-    petController.updatePet(req, res);
-});
 
 app.post('/logout', (req, res) => {
     userController.logout(req, res);
@@ -152,6 +152,19 @@ app.post('/cadastrarPet', upload.single("file"), (req, res) => {
     petController.addPet(req, res, imageName);
 })
 
+app.post('/pets/:id/editar', verficaDono, upload.single("file"), (req, res) => {
+    let imageName = req.file ? req.file.filename : undefined;
+    console.log("Nome do arquivo recebido do pet:", imageName);
+
+    // verifica se uma nova imagem foi enviada e, se não, mantenha a imagem atual.
+    if (!imageName && req.body.caminho_imagem) {
+        imageName = req.body.caminho_imagem;
+    }
+
+    petController.updatePet(req, res, imageName);
+});
+
+app.get('/pets/:id/editar', verficaDono, petController.getPetById2);
 
 app.get('/cadastrarPet', (req, res) => {
     res.render('cadastrarPet');
@@ -202,7 +215,17 @@ app.get('/parceiros', parceiroController.filtrarParceiros);
 
 app.get('/parceiros/:id/editar', checkAdmin, parceiroController.getParceiroById2);
 
-app.post('/parceiros/:id/editar', checkAdmin, parceiroController.updateParceiro);
+app.post('/parceiros/:id/editar', checkAdmin, upload.single("file"), (req, res) => {
+    let imageName = req.file ? req.file.filename : undefined;
+
+    // Verifica se uma nova imagem foi enviada e, se não, mantenha a imagem atual.
+    if (!imageName && req.body.caminho_imagem) {
+        imageName = req.body.caminho_imagem;
+    }
+
+    parceiroController.updateParceiro(req, res, imageName);
+});
+
 
 //cadastrar user
 app.post('/cadastrar', upload.single("file"), (req, res) => {
@@ -227,11 +250,114 @@ function perfilMe(req, res, next) {
 }
 
 app.post('/perfil/:id/editar', perfilMe, upload.single("file"), (req, res) => {
-    const imageName = req.file ? req.file.filename : undefined;
+    let imageName = req.file ? req.file.filename : undefined;
     console.log("Nome do arquivo recebido:", imageName);
+
+    if (!imageName && req.body.imagem) {
+        imageName = req.body.imagem;
+    }
+
     userController.updateUser(req, res, imageName);
 });
 
-app.get('/perfil/:id/editar', perfilMe, userController.getPetById);
+app.get('/perfil/:id/editar', perfilMe, userController.getUserById);
 
 app.post('/pet/:id/atualizar-status', verficaDono, petController.updateStatusPet);
+
+app.get('/perfil/:nome/:id_user', userController.mostrarPerfilPublico);
+
+app.get('/users', userController.getUsers2);
+
+app.get('/generateQRCode', async (req, res) => {
+    try {
+        const link = req.headers.referer || 'http://localhost:' + port;;
+
+        // Gera o QRCode e salva em uma pasta temporária
+        const qrCodePath = 'caminho_temporario_qrcode/animal_qrcode.png';
+        await QRCode.toFile(qrCodePath, link);
+
+        // Envia o QRCode como resposta para download
+        res.download(qrCodePath, 'animal_qrcode.png');
+    } catch (error) {
+        console.error('Erro ao gerar QRCode:', error);
+        res.status(500).send('Erro ao gerar QRCode');
+    }
+});
+
+app.get('/generatePDF/:id_animal/:user_id_user', async (req, res) => {
+    try {
+        const id = req.params.id_animal;
+        console.log("esse é o id q ta buscando: " + id);
+
+        const user_id_user = req.params.user_id_user;
+        const petInfo = await petController.getPetById3(id, user_id_user);
+
+        // Gera o PDF e salva em uma pasta temporária
+        const pdfPath = 'caminho_temporario_pdf/animal_profile.pdf';
+        const doc = new PDFDocument();
+        const stream = fs.createWriteStream(pdfPath);
+
+        doc.pipe(stream);
+
+        console.log('petInfo:', petInfo);
+
+        doc.fontSize(16).text('Perfil do Animal', { align: 'center' });
+        doc.moveDown();
+
+        if (petInfo.user && petInfo.user.length > 0) {
+            const owner = petInfo.user[0];
+
+            doc.fontSize(14).text(`Nome do dono: ${owner.nome}`);
+            doc.fontSize(14).text(`Email do dono: ${owner.email}`);
+            doc.fontSize(14).text(`Contato do dono: ${owner.telefone}`);
+            doc.moveDown();
+
+        } else {
+            doc.fontSize(14).text('Erro: Informações do dono indisponíveis.', { color: 'red' });
+        }
+
+        if (petInfo.pet && petInfo.pet.length > 0) {
+            const owner = petInfo.pet[0];
+
+            // if (owner && owner.caminho_imagem) {
+            //     doc.image(owner.caminho_imagem, { width: 200 });
+            // } else {
+            //     doc.fontSize(14).text('Erro: Caminho da imagem indefinido ou inválido.', { color: 'red' });
+            // }
+
+            // doc.fontSize(14).text(`Imagem: ${owner.caminho_imagem}`);
+            doc.fontSize(14).text(`Nome : ${owner.nome}`);
+            doc.fontSize(14).text(`Objetivo: ${owner.objetivo}`);
+            doc.fontSize(14).text(`Localização: ${owner.localizacao}`);
+            doc.fontSize(14).text(`Gênero: ${owner.genero}`);
+            doc.fontSize(14).text(`Porte: ${owner.porte}`);
+            doc.fontSize(14).text(`Espécie: ${owner.especie}`);
+            doc.fontSize(14).text(`Idade: ${owner.idade}`);
+            doc.fontSize(14).text(`Vacinas Realizadas: ${owner.vacina_obrigatoria}`);
+            doc.fontSize(14).text(`Descrição: ${owner.descricao}`);
+        } else {
+            doc.fontSize(14).text('Erro: Informações do pet indisponíveis.', { color: 'red' });
+        }
+
+        doc.end();
+
+        // Espera o término da escrita antes de enviar a resposta
+        stream.on('finish', () => {
+            stream.end();
+
+            // Envia o PDF como resposta para download
+            res.download(pdfPath, 'animal_profile.pdf', (err) => {
+                // Exclui o arquivo temporário após o download
+                fs.unlink(pdfPath, (unlinkErr) => {
+                    if (unlinkErr) {
+                        console.error('Erro ao excluir arquivo temporário:', unlinkErr);
+                    }
+                });
+            });
+        });
+
+    } catch (error) {
+        console.error('Erro ao gerar PDF:', error);
+        res.status(500).send('Erro ao gerar PDF');
+    }
+});

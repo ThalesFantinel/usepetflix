@@ -12,17 +12,31 @@
     <% parceiro.forEach(function(parceiro) { %>
         <div class="col mb-5">
             <div class="card h-100">
-                <img class="card-img-top" src="/<%= parceiro.caminho_imagem %>" alt="..." />
                 <div class="card-body p-4">
                     <div class="text-center">
+                        <img src="/<%= parceiro.caminho_imagem %>" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 20vw;" />
+
                         <h5 class="fw-bolder text-start">
                             <%= parceiro.nome %>
                         </h5>
                         <h6 class="text-start">
-                            <%= parceiro.tipo %>
+                            <%= parceiro.descricao %>
                         </h6>
-                        <p>da p informar mais coisas aq sobre os parceiros tipo o é , petshop ou sla, tem varias inf
-                            sobre parceiros no banco, escolher as mais importantes </p>
+                        <h6 class="text-start">
+                            <%= parceiro.endereco %>
+                        </h6>
+                        <h6 class="text-start">
+                            <%= parceiro.telefone %>
+                        </h6>
+                        <h6 class="text-start">
+                            <%= parceiro.servico_oferecido %>
+                        </h6>
+                        <h6 class="text-start">
+                            <%= parceiro.horario_funcionamento %>
+                        </h6>
+                        <h6 class="text-start">
+                            <%= parceiro.rede_social %>
+                        </h6>
                     </div>
                 </div>
                 <% if (user && user.role==='admin' ) { %>

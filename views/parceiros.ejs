@@ -1,80 +1,24 @@
-<!DOCTYPE html>
-<html lang="PT-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Patrocinio</title>
-    <link rel="icon" href="./img/Logo.png" />
-    <link href="/css/bootstrap.css" rel="stylesheet" />
-    <link href="/css2/sobre.css" rel="stylesheet" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
+<%- include('layouts/default/Navbar') %>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light">
       <div class="container-fluid">
-        <img src="/img/navimage.png" />
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
+        <img src="./img/navimage.png" style="width: 25vh; margin-left: 3vw;"/>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse text-end" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style="color: #000; text-decoration: underline"
-              >
-                Páginas
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000; text-decoration: underline"> Páginas </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/">Início</a></li>
-                <li><a class="dropdown-item" href="/sobre">Sobre</a></li>
-                <li>
-                  <a class="dropdown-item" href="/parceiros">Parceiros</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/conteudos">Conteúdos</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/cadastrarPet"
-                    >Cadastrar pet</a
-                  >
-                </li>
+                  <li><a class="dropdown-item" href="/sobre">Sobre</a></li>
+                  <li><a class="dropdown-item" href="/parceiros">Parceiros</a></li>
+                  <li><a class="dropdown-item" href="/conteudos">Conteúdos</a></li>
+                  <li><a class="dropdown-item" href="/cadastrarPet">Cadastrar pet</a></li>
+                  <li><a class="dropdown-item" href="/users">Pessoas e Ong's</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="/pets"
-                style="color: #000; text-decoration: underline"
-                >Adotar</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="/perfil"
-                style="color: #000; text-decoration: underline"
-                >Perfil</a
-              >
-            </li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/pets" style="color: #000; text-decoration: underline">Adotar</a></li>
+            <li class="nav-item"><a class="nav-link" href="/perfil" style="color: #000; text-decoration: underline">Perfil</a></li>
           </ul>
         </div>
       </div>
@@ -330,6 +274,7 @@
         </div>
       </div>
     </section>
+
     <nav class="navbar navbar-expand-lg mt-5" style="background-color: #260d33">
       <div class="container-fluid">
         <img style="width: 25vh; margin-left: 5vw" src="/img/logofooter.png" />
@@ -348,6 +293,7 @@
         </div>
       </div>
     </nav>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

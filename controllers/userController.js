@@ -9,6 +9,11 @@ async function getUsers(req, res) {
     res.render('perfil', { users });
 }
 
+async function getUsers2(req, res) {
+    users = await User.listarUser();
+    res.render('users', { users });
+}
+
 function login(req, res) {
     res.render("login");
 }
@@ -18,18 +23,21 @@ async function autenticar(req, res) {
         const resp = await User.autenticar(req.body.email, req.body.senha);
 
         if (resp && resp.length > 0) {
-            // res.status(200).json({ message: 'Usuário autenticado com sucesso!' });
-
             req.session.user = resp[0];
-            res.redirect('/');
+
+            // Verifica se há um parâmetro de redirecionamento na sessão
+            const redirectTo = req.session.redirectTo || '/';
+
+            // Limpa o parâmetro de redirecionamento na sessão
+            delete req.session.redirectTo;
+
+            res.redirect(redirectTo);
         } else {
-            res.locals.erro = 'Email ou senha incorretos.'; // Define a mensagem de erro
+            res.locals.erro = 'Email ou senha incorretos.';
             res.render('login');
-            // res.status(401).json({ message: 'Credenciais inválidas!' });
-            res.redirect('/login')
         }
     } catch (error) {
-        // res.status(500).json({ messsage: 'Erro durante a autenticação!'})
+        res.status("Erro durante a autenticação!");
     }
 }
 
@@ -39,15 +47,40 @@ let user = {};
 async function mostrarPerfil(req, res) {
     const userId = req.session.user.id_user;
 
+    const userId2 = req.session.user.id_user;
+
     const listaPets = await Pet.getAnimaisByDono(userId);
 
+    const profileLink = `${req.protocol}://${req.get('host')}/${user.nome}/${user.id_user}`;
 
     user = await User.findById(userId);
-    res.render('perfil', { user, listaPets });
+    res.render('perfil', { user, listaPets, userId2, profileLink });
+};
+async function mostrarPerfilPublico(req, res) {
+    try {
+        const userId = req.params.id_user;
+
+        const userId2 = req.session.user.id_user;
+
+        // Obtenha as informações do usuário
+        const user = await User.findById(userId);
+
+        // Obtenha a lista de animais do dono
+        const listaPets = await Pet.getAnimaisByDono(userId);
+
+        // Construa o link do perfil
+        const profileLink = `${req.protocol}://${req.get('host')}/perfil/${user.nome}/${user.id_user}`;
+
+        // Renderize a página do perfil com as informações
+        res.render('perfil', { user, listaPets, profileLink, userId2 });
+    } catch (error) {
+        console.error('Erro ao mostrar o perfil público:', error);
+        res.status(500).send('Erro ao mostrar o perfil público');
+    }
 };
 
 
-async function getPetById(req, res) {
+async function getUserById(req, res) {
     const userId = req.session.user.id_user;
 
     user = await User.findById(userId);
@@ -98,7 +131,7 @@ function validarCPF(cpf) {
 }
 
 async function addUser(req, res, imagePath) {
-    const { id_user, nome, email, cpf, telefone, senha, imagem } = req.body;
+    const { id_user, nome, email, cpf, telefone, senha, imagem, biografia } = req.body;
 
     try {
         const emailExiste = await User.verificarEmail(email);
@@ -114,9 +147,9 @@ async function addUser(req, res, imagePath) {
             } else {
                 if (validator.isEmail(email)) {
                     if (validarCPF(cpf)) {
-                        const user = new User(id_user, nome, email, cpf, telefone, senha, imagem);
+                        const user = new User(id_user, nome, email, cpf, telefone, senha, imagem, biografia);
                         user.save(imagePath).then(() => console.log("user cadastrado com sucesso hehe"));
-                        res.redirect('/');
+                        res.redirect('/login');
                     } else {
                         res.locals.erro2 = 'Cpf inválido!';
                         res.render('cadastro');
@@ -141,9 +174,10 @@ async function updateUser(req, res, filename) {
     console.log("Nome do arquivo recebido no controlador:", +filename);
 
     const { id } = req.params;
-    const { nome, telefone } = req.body;
+    const { nome, email, cpf, telefone, biografia } = req.body;
 
-    User.update(id, nome, telefone, filename, (err) => {
+    // nome, email, cpf, telefone, imagem, biografia
+    User.update(id, nome, email, cpf, telefone, filename, biografia, (err) => {
         if (err) {
             console.error('Erro ao atualizar o user:', err);
             return res.status(500).send('Erro ao atualizar o user no banco de dados.');
@@ -155,4 +189,4 @@ async function updateUser(req, res, filename) {
 }
 
 
-module.exports = { getUsers, login, autenticar, logout, mostrarPerfil, addUser, updateUser, getPetById };
+module.exports = { getUsers, login, autenticar, logout, mostrarPerfil, addUser, updateUser, getUserById, mostrarPerfilPublico, getUsers2 };

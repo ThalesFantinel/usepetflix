@@ -77,6 +77,27 @@ async function getPetById(req, res) {
   res.render("pet", { user: user, pet: pet, userId });
 }
 
+async function getPetById3(id, user_id_user) {
+  try {
+      // Certifique-se de que a função getById retorna um objeto com a propriedade 'id'
+      const pet = await Pet.getById(id);
+
+      // Certifique-se de que a função userDono retorna um objeto com a propriedade 'id_user'
+      const user = await User.userDono(user_id_user);
+
+      // Certifique-se de que o objeto 'pet' não é indefinido antes de acessar a propriedade 'id'
+      // if (!pet || !pet.id) {
+      //     // Modificado: Retorna um objeto vazio se o pet não for encontrado
+      //     return { pet: {}, user };
+      // }
+
+      return { pet, user };
+  } catch (error) {
+      console.error('Erro ao obter informações do pet:', error);
+      throw error; // Certifique-se de tratar o erro adequado na chamada da função
+  }
+}
+
 async function filtrarAnimais(req, res) {
   const localizacao = req.body.localizacao;
 
@@ -92,7 +113,7 @@ async function getPetById2(req, res) {
   res.render("editarPet", { pet: pet });
 }
 
-async function updatePet(req, res) {
+async function updatePet(req, res, filename) {
   const { id } = req.params;
   const {
     nome,
@@ -104,6 +125,8 @@ async function updatePet(req, res) {
     vacina_obrigatoria,
     objetivo,
     descricao,
+    caminho_imagem
+
   } = req.body;
 
   Pet.update(
@@ -117,6 +140,7 @@ async function updatePet(req, res) {
     vacina_obrigatoria,
     objetivo,
     descricao,
+    filename,
     (err) => {
       if (err) {
         console.error("Erro ao atualizar o pet:", err);
@@ -155,4 +179,5 @@ module.exports = {
   filtrarAnimais,
   getPetById2,
   updateStatusPet,
+  getPetById3
 };

@@ -52,9 +52,9 @@ class Parceiro {
         return parceiros;
     }
 
-    static async update(id, nome, tipo, descricao, endereco, telefone, servico_oferecido, horario_funcionamento, rede_social, rg, cpf, cnpj) {
+    static async update(id, nome, tipo, descricao, endereco, telefone, servico_oferecido, horario_funcionamento, rede_social, rg, cpf, cnpj, filename) {
                                                                                                                                                                                                                                                                                                                                          
-        const resp = await Database.query(`UPDATE parceiro SET nome = '${nome}', tipo = '${tipo}', descricao = '${descricao}', endereco = '${endereco}', telefone = '${telefone}', servico_oferecido = '${servico_oferecido}', horario_funcionamento = '${horario_funcionamento}', rede_social = '${rede_social}', rg = '${rg}', cpf = '${cpf}', cnpj = '${cnpj}' WHERE id_parceiro = '${id}'`)
+        const resp = await Database.query(`UPDATE parceiro SET nome = '${nome}', tipo = '${tipo}', descricao = '${descricao}', endereco = '${endereco}', telefone = '${telefone}', servico_oferecido = '${servico_oferecido}', horario_funcionamento = '${horario_funcionamento}', rede_social = '${rede_social}', rg = '${rg}', cpf = '${cpf}', cnpj = '${cnpj}', caminho_imagem = '${filename}' WHERE id_parceiro = '${id}'`)
         if (resp) {
             if (resp.affectedRows > 0) {
                 return true;

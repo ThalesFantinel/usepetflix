@@ -5,18 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/bootstrap.css">
+  <link rel="stylesheet" href="./css/login.css">
   <title>Cadastrar</title>
-</head>
-<title>Login 04</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-<link rel="stylesheet" href="/bootstrap.css" />
 </head>
 
 <body>
@@ -26,8 +16,7 @@
         <div class="col-md-12 col-lg-10">
           <div class="wrap d-md-flex">
             <div class="img" style="
-                background-image: url(/imagens/Faça\ agora\ o\ seu\ login!.png);
-              "></div>
+                background-image: url(/imagens/Faça\ agora\ o\ seu\ login!.png);"></div>
             <div class="login-wrap p-5 p-md-5">
               <div class="d-flex">
                 <div class="w-100">
@@ -42,54 +31,92 @@
                   <input type="text" class="form-control" placeholder="Digite aqui..." name="nome" required />
                 </div>
 
-                <div class="form-group mb-0"id="genero">
-                   <label class="label" for="nome">Gênero</label>
-                   <div>
-                      <input class="ml-1 mr-1" name="genero" type="radio" value="Macho" <%='Macho' ? 'selected' : '' %>>Macho
-                      <input class="ml-1 mr-1" name="genero" type="radio" value="Fêmea" <%='Fêmea' ? 'selected' : '' %>>Fêmea
-                   </div>
+                <div class="form-group mb-0" id="genero">
+                  <label class="label" for="nome">Gênero</label>
+                  <div>
+                    <input class="ml-1 mr-1" name="genero" type="radio" value="Macho" <%='Macho' ? 'selected' : ''
+                      %>>Macho
+                    <input class="ml-1 mr-1" name="genero" type="radio" value="Fêmea" <%='Fêmea' ? 'selected' : ''
+                      %>>Fêmea
+                  </div>
                 </div>
 
                 <div class="form-group mb-0 " id="porte">
                   <label class="label" for="nome">Porte</label>
                   <div>
-                      <input class="ml-1 mr-1" name="porte" type="radio" value="Grande" <%='Grande' ? 'selected' : '' %>>Grande
-                      <input class="ml-1 mr-1" name="porte" type="radio" value="Médio" <%='Médio' ? 'selected' : '' %>>Médio
-                      <input class="ml-1 mr-1" name="porte" type="radio" value="Médio" <%='Pequeno' ? 'selected' : '' %>>Pequeno
-                  </div>                
+                    <input class="ml-1 mr-1" name="porte" type="radio" value="Grande" <%='Grande' ? 'selected' : ''
+                      %>>Grande
+                    <input class="ml-1 mr-1" name="porte" type="radio" value="Médio" <%='Médio' ? 'selected' : ''
+                      %>>Médio
+                    <input class="ml-1 mr-1" name="porte" type="radio" value="Médio" <%='Pequeno' ? 'selected' : ''
+                      %>>Pequeno
+                  </div>
                 </div>
 
                 <div class="form-group mb-0">
                   <label class="label" for="localizacao">Localização</label>
-                  <input type="text" class="form-control" placeholder="Digite aqui..." name="localizacao" required />
+                  <input type="text" class="form-control" placeholder="Digite aqui..." name="localizacao" list="cidades"
+                    required />
+                  <datalist id="cidades">
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function () {
+                        const inputLocalizacao = document.querySelector('input[name="localizacao"]');
+                        const datalistCidades = document.getElementById('cidades');
+
+                        // Carregue o arquivo JSON localmente
+                        fetch('cidades-brasil.json')
+                          .then(response => response.json())
+                          .then(data => {
+                            // Itera sobre a lista de cidades e adiciona as opções ao datalist
+                            data.cidades.forEach(cidade => {
+                              const option = document.createElement('option');
+                              option.value = cidade;
+                              datalistCidades.appendChild(option);
+                            });
+                          })
+                          .catch(error => console.error('Erro ao carregar cidades:', error));
+                      });
+                    </script>
+                  </datalist>
                 </div>
+
+
+
 
                 <div class="form-group mb-0">
                   <label class="label" for="especie">Espécie</label>
-                  <input type="text" class="form-control" placeholder="Digite aqui..." name="especie" required />
+                  <input type="text" list="especies" class="form-control" placeholder="Digite aqui..." name="especie"
+                    required />
+                  <datalist id="especies">
+                    <option value="Cachorro"></option>
+                    <option value="Gato"></option>
+                    <option value="Rammstein"></option>
+                    <option value="Galinha"></option>
+                    <option value="Cavalo"></option>
+                  </datalist>
                 </div>
 
                 <div class="form-group mb-0">
                   <label class="label" for="idade">Idade(se souber)</label>
-                  <input type="text" class="form-control" placeholder="Digite aqui..." name="idade" required />
+                  <input type="text" list="idd" class="form-control" placeholder="Digite aqui..." name="idade"
+                    required />
+
+                  <datalist id="idd">
+                    <option value="1 ano"></option>
+                    <option value="2 anos"></option>
+                    <option value="3 anos"></option>
+                    <option value="4 anos"></option>
+                    <option value="5 anos"></option>
+                  </datalist>
                 </div>
+
 
                 <div class="form-group mb-0" id="vacina_obrigatoria">
-                  <label class="label" for="nome">Vacinas</label>
                   <div>
-                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="v1" <%='v1' ? 'selected' : '' %>>v1
-                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="v2" <%='v2' ? 'selected' : '' %>>v2
-                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="v3" <%='v3' ? 'selected' : '' %>>v3
-                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="Nenhuma" <%='Nenhuma' ? 'selected' : '' %>>Nenhuma
-                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="Não sei dizer" <%='Não sei dizer' ? 'selected' : '' %>>Não sei
-                    <input class="ml-1 mr-2" type="radio" name="vacina_obrigatoria" value="outra(s)" <%='outra(s)' ? 'selected' : '' %>>Outra
+                    <label class="label" for="vacina_obrigatoria">Vacinas</label>
+                    <input type="text" class="form-control" placeholder="Digite aqui..." name="vacina_obrigatoria" required />
                   </div>
-                 
-                </div>
 
-                <div id="outraVacina" style="display: none;">
-                  <label for="campoOutraVacina"></label>
-                  <input type="text" id="campoOutraVacina" name="vacina_obrigatoria" placeholder="Qual outra vacina?">
                 </div>
 
                 <script>
@@ -104,29 +131,32 @@
                     }
                   });
                 </script>
-                
+
                 <div class="form-group mb-0" id="objetivo">
                   <label class="label" for="nome">Objetivo</label>
-                   <div name="objetivo">
-                      <input class="ml-1 mr-1" type="radio" name="objetivo" value="Adoção" <%='Adoção' ? 'selected' : '' %>>Adoção
-                      <input class="ml-1 mr-1" type="radio" name="objetivo" value="Apadrinhamento" <%='Apadrinhamento' ? 'selected' : '' %>>Apadrin.
-                      <input class="ml-1  mr-1" type="radio" name="objetivo" value="Desaparecido" <%='Desaparecido' ? 'selected' : '' %>>Desapar.
-                    </div>
-                </div>
-                   
-
-                    <div class="form-group mb-0">
-                      <label class="label" for="descricao">Descrição</label>
-                      <input type="text" class="form-control" placeholder="Digite aqui..." name="descricao" required />
-                    </div>
-
-                  <div class="form-group mb-0">
-                    <label class="label" for="imagem">Selecione uma imagem:</label>
-                    <input type="file" name="file" id="imagem" required>
-                    <div class="pt-3">
-                      <input type="submit" value="Enviar" class="form-control btn btn-primary rounded submit px-3">
-                    </div>
+                  <div name="objetivo">
+                    <input class="ml-1 mr-1" type="radio" name="objetivo" value="Adoção" <%='Adoção' ? 'selected' : ''
+                      %>>Adoção
+                    <input class="ml-1 mr-1" type="radio" name="objetivo" value="Apadrinhamento" <%='Apadrinhamento'
+                      ? 'selected' : '' %>>Apadrin.
+                    <input class="ml-1  mr-1" type="radio" name="objetivo" value="Desaparecido" <%='Desaparecido'
+                      ? 'selected' : '' %>>Desapar.
                   </div>
+                </div>
+
+
+                <div class="form-group mb-0">
+                  <label class="label" for="descricao">Descrição</label>
+                  <input type="text" class="form-control" placeholder="Digite aqui..." name="descricao" required />
+                </div>
+
+                <div class="form-group mb-0">
+                  <label class="label" for="imagem">Selecione uma imagem:</label>
+                  <input type="file" name="file" id="imagem" required>
+                  <div class="pt-3">
+                    <input type="submit" value="Enviar" class="form-control btn btn-primary rounded submit px-3">
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -135,14 +165,4 @@
     </div>
   </section>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
-</body>
-
-</html>
-
-<body></body>
-
-</html>
+<%- include('layouts/default/Footer') %>
