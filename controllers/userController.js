@@ -60,7 +60,12 @@ async function mostrarPerfilPublico(req, res) {
     try {
         const userId = req.params.id_user;
 
-        const userId2 = req.session.user.id_user;
+        let userId2;
+        if(!req.session.user){
+            userId2 = "0";
+        }else{
+            userId2 = req.session.user.id_user;
+        }
 
         // Obtenha as informações do usuário
         const user = await User.findById(userId);

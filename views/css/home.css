@@ -339,6 +339,9 @@ figure {
   margin: 0 0 1rem;
 }
 
+.ftco1-section {
+  padding: 2em 0; }
+
 img,
 svg {
   vertical-align: middle;
@@ -635,6 +638,11 @@ progress {
   content: "— ";
 }
 
+.img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -662,6 +670,12 @@ progress {
   font-size: 0.875em;
   color: #6c757d;
 }
+
+.img, .login-wrap {
+  width: 50%; }
+  @media (max-width: 991.98px) {
+    .img, .login-wrap {
+      width: 100%; } }
 
 .container,
 .container-fluid,

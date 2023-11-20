@@ -50,11 +50,7 @@
           if(parceiro.tipo=='Clínica Veterinária' ) { %>
           <div class="col mb-5">
             <div class="card h-100">
-              <img
-                class="card-img-top"
-                src="/<%= parceiro.caminho_imagem %>"
-                alt="..."
-              />
+              <img class="card-img-top" src="/<%= parceiro.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" alt="..."/>
 
               <div class="card-body p-4">
                 <div class="text-center">
@@ -109,11 +105,7 @@
 
           <div class="col mb-5">
             <div class="card h-100">
-              <img
-                class="card-img-top"
-                src="/<%= parceiro.caminho_imagem %>"
-                alt="..."
-              />
+              <img class="card-img-top" src="/<%= parceiro.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" alt="..." />
 
               <div class="card-body p-4">
                 <div class="text-center">
@@ -142,11 +134,7 @@
               <% if (user && user.role==='admin' ) { %>
               <a href="/parceiros/<%= parceiro.id_parceiro %>/editar">Editar</a>
               <% } %> <% if (user && user.role==='admin' ) { %>
-              <form
-                action="/parceiros/<%= parceiro.id_parceiro %>/excluir"
-                method="POST"
-                style="display: inline"
-              >
+              <form action="/parceiros/<%= parceiro.id_parceiro %>/excluir" method="POST" style="display: inline" >
                 <button type="submit">Excluir</button>
               </form>
               <% } %>
@@ -168,11 +156,7 @@
 
           <div class="col mb-5">
             <div class="card h-100">
-              <img
-                class="card-img-top"
-                src="/<%= parceiro.caminho_imagem %>"
-                alt="..."
-              />
+              <img class="card-img-top" src="/<%= parceiro.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" alt="..." />
 
               <div class="card-body p-4">
                 <div class="text-center">
@@ -227,11 +211,7 @@
 
           <div class="col mb-5">
             <div class="card h-100">
-              <img
-                class="card-img-top"
-                src="/<%= parceiro.caminho_imagem %>"
-                alt="..."
-              />
+              <img class="card-img-top" src="/<%= parceiro.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" alt="..." />
 
               <div class="card-body p-4">
                 <div class="text-center">

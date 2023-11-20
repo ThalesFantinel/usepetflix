@@ -71,8 +71,13 @@ async function getPetById(req, res) {
   const user_id_user = req.params.user_id_user;
   user = await User.userDono(user_id_user);
 
-  const userId = req.session.user.id_user;
-
+  let userId;
+  
+  if(!req.session.user){
+    userId = "0";
+  }else{
+    userId = req.session.user.id_user;
+  }
 
   res.render("pet", { user: user, pet: pet, userId });
 }

@@ -1,59 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('layouts/default/Navbar') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<% parceiro.forEach(function(parceiro) { %>
 
-<body>
+        <header class="py-5 bg-image-full" style="background-color: #bedcff; margin-top: 4.1rem;">
+            <% if (user && user.role==='admin' ) { %>
+                <div class="d-flex justify-content-end align-items-center mt-0 mb-3 mx-5">
+                    <a class="btn" style="background-color: #e3b04b; color: #fff; margin-right: 10px;" href="/parceiros/<%= parceiro.id_parceiro %>/editar">Editar</a>
+                    <form action="/parceiros/<%= parceiro.id_parceiro %>/excluir" method="POST" style="display: inline;">
+                        <input class="btn btn-danger" type="submit" value="Excluir" />
+                    </form>
+                </div>
+            <% } %>
+            <div class="text-center mt-5 mb-3">
+                <img class="img-fluid rounded-circle mb-4" style="height: 18rem; width: 18rem; object-fit: cover;"
+                    src="/<%= parceiro.caminho_imagem %>" onerror="this.src='/img/perfilSemFoto.png';" />
+                <h1 class="text-dark fs-3 fw-bolder"><%= parceiro.nome %></h1>
+            </div>
+        </header>
 
-    <% parceiro.forEach(function(parceiro) { %>
-        <div class="col mb-5">
-            <div class="card h-100">
-                <div class="card-body p-4">
-                    <div class="text-center">
-                        <img src="/<%= parceiro.caminho_imagem %>" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 20vw;" />
+        
 
-                        <h5 class="fw-bolder text-start">
-                            <%= parceiro.nome %>
-                        </h5>
-                        <h6 class="text-start">
-                            <%= parceiro.descricao %>
-                        </h6>
-                        <h6 class="text-start">
-                            <%= parceiro.endereco %>
-                        </h6>
-                        <h6 class="text-start">
-                            <%= parceiro.telefone %>
-                        </h6>
-                        <h6 class="text-start">
-                            <%= parceiro.servico_oferecido %>
-                        </h6>
-                        <h6 class="text-start">
-                            <%= parceiro.horario_funcionamento %>
-                        </h6>
-                        <h6 class="text-start">
-                            <%= parceiro.rede_social %>
-                        </h6>
+        <section id="service-details" class="service-details mt-0">
+            <div class="container">
+                <div class="row gy-5 mb-5">
+                    <div class="col-12">
+                        <div class="service-box">
+                            <h4>Informações do Parceiro</h4>
+                            <div class="services-list d-flex justify-content-between">
+                                <div class="p-2 col-4 text-start">
+                                    <p><strong>Nome:</strong> <%= parceiro.nome %> </p>
+                                </div>
+                                <div class="p-2 col-4 text-center">
+                                    <p><strong>Endereço:</strong> <%= parceiro.endereco %> </p>
+                                </div>
+                                <div class="p-2 col-4 text-end">
+                                    <p><strong>Contato:</strong> <%= parceiro.telefone %> </p>
+                                </div>
+                            </div>
+
+                            <div class="services-list d-flex justify-content-between">
+                                <div class="p-2 col-4 text-start">
+                                    <p><strong>Serviço:</strong> <%= parceiro.servico_oferecido %> </p>
+                                </div>
+                                <div class="p-2 col-4 text-center">
+                                    <p><strong>Horários:</strong> <%= parceiro.horario_funcionamento %> </p>
+                                </div>
+                                <div class="p-2 col-4 text-end">
+                                    <p><strong>Redes sociais:</strong> <%= parceiro.rede_social %> </p>
+                                </div>
+                            </div>
+
+                            <div class="services-list" style="padding: 8px;">
+                                <p><strong>Descrição:</strong> <%= parceiro.descricao %> </p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <% if (user && user.role==='admin' ) { %>
-                    <a href="/parceiros/<%= parceiro.id_parceiro %>/editar">Editar</a>
-                    <% } %>
-
-                        <% if (user && user.role==='admin' ) { %>
-                            <form action="/parceiros/<%= parceiro.id_parceiro %>/excluir" method="POST"
-                                style="display: inline;">
-                                <button type="submit">Excluir</button>
-                            </form>
-                            <% } %>
             </div>
-        </div>
-        <% }) %>
+        </section>
 
+    <% }) %>
 
-</body>
-
-</html>
+<%- include('layouts/default/Footer') %>

@@ -40,18 +40,10 @@ app.use(session({
 
 app.use((req, res, next) => {
     if (!req.session.user) {
-        if (req.originalUrl === '/login' || req.originalUrl === '/autenticar' || req.originalUrl === '/cadastrar') {
-            app.set('layout', './layouts/default/login.ejs');
-            res.locals.layoutVariables = {
-                url: process.env.URL,
-                img: "/img/",
-                style: "/css/",
-                title: "Login",
-                user: null
-            };
-            next();
-        } else {
+        if (req.originalUrl === '/cadastrarPet' || req.originalUrl === '/perfil' ) {
             res.redirect('/login');
+        } else {
+            next();
         }
     } else {
         // Verifica se o usuário é um administrador
@@ -73,7 +65,6 @@ app.use((req, res, next) => {
         next();
     }
 });
-
 
 app.use(expressLayouts);
 app.set('layout', './layouts/default/index.ejs');
@@ -105,6 +96,7 @@ app.post('/pets/:id_animal/excluir', (req, res) => {
 
 const Database = require('./models/database');
 const { log } = require('console');
+const { nextTick } = require('process');
 
 async function verficaDono(req, res, next) {
     const id = req.params.id;
