@@ -34,6 +34,11 @@ async function getParceiroById(req, res) {
     const { id } = req.params;
     parceiro = await Parceiro.getById(id);
 
+    if(!req.session.user){
+        req.session.user = "0";
+      }else{
+        userId = req.session.user.id_user;
+      }
     res.render('parceiro', { user: req.session.user, parceiro: parceiro });
 }
 
